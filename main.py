@@ -13,7 +13,7 @@ def main():
     # get list of all unique locations
     uniques = envSurv.location.unique()
     with pd.ExcelWriter('District_Data.xlsx') as writer:
-        for District in uniques:
+        for District in sorted(uniques):
             try:
                 sheet = template.copy()
                 # iterate over each sample in specific district
