@@ -7,7 +7,7 @@ def main(argv):
     # Read tables
     compressTable = pd.read_excel(argv[0])
     template = compressTable.loc[:, 'Mutation':'UK']
-    envSurv = pd.read_excel("EnvSurv_excel.xlsx")
+    envSurv = pd.read_excel(argv[1])
     # grouping by locations
     envgrouped = envSurv.groupby(['location'])
     # get list of all unique locations
