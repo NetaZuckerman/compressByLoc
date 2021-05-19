@@ -1,11 +1,11 @@
 import pandas as pd
-
+import sys
 
 # This script takes location information from EnvSurf excel, and the compressed table
 # and divide the compressed table to sheets by districts
-def main():
+def main(argv):
     # Read tables
-    compressTable = pd.read_excel("monitored_compress_11_5.xlsx")
+    compressTable = pd.read_excel(argv[0])
     template = compressTable.loc[:, 'Mutation':'UK']
     envSurv = pd.read_excel("EnvSurv_excel.xlsx")
     # grouping by locations
@@ -28,4 +28,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
