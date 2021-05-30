@@ -5,14 +5,14 @@ import sys
 # and divide the compressed table to sheets by districts
 def main(argv):
     # Read tables
-    compressTable = pd.read_excel(argv[0])
+    compressTable = pd.read_excel(argv[0], engine='openpyxl')
     template = compressTable.loc[:, 'Mutation':'UK']
-    envSurv = pd.read_excel(argv[1])
+    envSurv = pd.read_excel(argv[1], engine='openpyxl')
     # grouping by locations
     envgrouped = envSurv.groupby(['location'])
     # get list of all unique locations
     uniques = envSurv.location.unique()
-    with pd.ExcelWriter('District_Data.xlsx', engine='xlsxwriter') as writer:
+    with pd.ExcelWriter('District_Data.xlsx', engine='openpyxl') as writer:
         for District in sorted(uniques):
             try:
                 sheet = template.copy()
