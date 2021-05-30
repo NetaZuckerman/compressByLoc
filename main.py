@@ -12,7 +12,7 @@ def main(argv):
     envgrouped = envSurv.groupby(['location'])
     # get list of all unique locations
     uniques = envSurv.location.unique()
-    with pd.ExcelWriter('District_Data.xlsx', engine='xlsxwriter') as writer:
+    with pd.ExcelWriter('District_Data.xlsx', engine='openpyxl') as writer:
         for District in sorted(uniques):
             try:
                 sheet = template.copy()
